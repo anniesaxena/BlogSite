@@ -35,14 +35,17 @@
             </div>
         </div>
         <div class="col-lg-4 mx-1 mx-md-auto">
+            <ul class="nav nav-pills nav-justified">
+                <li><%=noOfViews%> views</li>
+                <li><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></li>
+            </ul>
             <!-- number of comments -->
-            <h6 class="text-muted mt-4 mt-lg-0 fweight-600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
+            <h6 class="mt-4 mt-lg-0 fweight-600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
             
             <!-- like button -->
             <div class="like-btn">
               <div class="content">
                 <span class="like_icon"></span>
-                <div><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></div>
                 <% if(!isLiked){ %>
                     <form action="/posts/<%=id%>/like?_method=PUT" method="POST">
                         <button class="button likebtn" type="submit"> Like</button>
@@ -52,7 +55,6 @@
                         <button class="button likebtn" type="submit">Liked</button>
                     </form>
                 <% } %> 
-                <div><%=noOfViews%> views</div>
               </div>
             </div>
             
